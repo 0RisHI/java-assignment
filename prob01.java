@@ -5,48 +5,43 @@ calculate 5! (120) and then find the sum of its digits (1 + 2 + 0 = 3). */
 
 import java.util.Scanner;
 
-class prob1 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+public class Main  { 
+public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        // Taking input from user
-        System.out.println("Enter an integer");
-        int num = sc.nextInt();
-        sc.close();
+        System.out.print("Enter a non-negative integer: ");
+        int number = scanner.nextInt();
 
-        // Check if the input is within the range as big digit factorial can go long
-        if (num < 0 || num > 20) {
-            System.out.println("Please enter a number between 0 to 20.");
-            return;
+        if (number < 0) {
+            System.out.println("Please enter a non-negative integer.");
+        } else {
+            long factorial = calculateFactorial(number);
+            int digitSum = calculateDigitSum(factorial);
+
+            System.out.println("Factorial of " + number + " is: " + factorial);
+            System.out.println("Sum of digits of the factorial is: " + digitSum);
         }
 
-        // Calculating the factorial of the number
-        long fac = calcFac(num);
-        System.out.println("Factorial of " + num + " is: " + fac);
-
-        // Calculating sum of digits of the factorial
-        int sumOfNums = calcSumOfNums(fac);
-        System.out.println("Sum of the digit of the factorial: " + sumOfNums);
-
+        scanner.close();
     }
 
-    // Method to calculate factorial
-    public static long calcFac(int n) {
-        long res = 1;
-        for (int i = 2; i <= n; i++) {
-            res *= i;
+    public static long calculateFactorial(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return n * calculateFactorial(n - 1);
         }
-        return res;
     }
 
-    // Method to calculate sum of numbers
-    public static int calcSumOfNums(long num) {
+    public static int calculateDigitSum(long num) {
         int sum = 0;
         while (num > 0) {
             sum += num % 10;
             num /= 10;
         }
         return sum;
+    }
+}
     }
     
 }
