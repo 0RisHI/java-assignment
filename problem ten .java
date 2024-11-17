@@ -21,12 +21,11 @@ public class prob10 {
     }
 
     public static int countOccurrences(String str, char c) {
-        int count = 0;
-        for (char ch: str.toCharArray()) {
-            if (ch == c) {
-                count++;
-            }
+    int count = 0;
+    for (char ch : str.toCharArray()) {
+        if (ch == c) {
+            count++;
         }
-        return count++;
     }
+    return count; // Return count without incrementing here
 }
